@@ -1,0 +1,19 @@
+{% extends "layouts/base.jinja" %}
+
+{% block content %}
+<h1>商品列表</h1>
+<form method="POST" action="{{ url_for('products.edit', id=product.id) }}">
+    <label for="title">品名</label>
+    <input type="text" name="title" value="{{ product.title }}">
+
+    <label for="description">商品描述</label>
+    <textarea name="description">{{ product.description}}</textarea>
+
+    <label for="price">價格</label>
+    <input type="number" name="price" value="{{ product.price }}">
+
+    <button type="submit">確定</button>
+</form>
+
+<a href="{{ url_for('products.each', id=product.id) }}">編輯</a>
+{% endblock content %}

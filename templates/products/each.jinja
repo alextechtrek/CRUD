@@ -1,0 +1,16 @@
+{% extends "layouts/base.jinja" %}
+
+{% block content %}
+<h1>{{product.title}}</h1>
+<p>{{ product.price}}</p>
+<p>{{product.description | striptags}}</p>
+
+<a href="{{ url_for('products.edit', id=product.id)}}">編輯商品</a>
+
+<form method="POST" action="{{ url_for('products.each', id=product.id) }}">
+    <button type="submit">刪除商品</button>
+</form>
+
+<a href="{{ url_for('products.index')}}">返回首頁</a>
+
+{% endblock content %}

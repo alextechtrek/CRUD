@@ -1,0 +1,17 @@
+{% extends "layouts/base.jinja" %}
+
+{% block content %}
+<h1>商品列表</h1>
+<ul>
+    {% for product in products  %}
+    <li>
+        <a href="{{ url_for('products.each', id=product.id) }}">
+            <h3>{{product.title}}</h3>
+            <p>{{ product.description | striptags | truncate(50) }}</p>
+            <p>{{ product.price}}</p>
+        </a>
+    </li>
+    {% endfor %}
+    <a href="{{url_for('products.add')}}">增新商品</a>
+</ul>
+{% endblock content %}
